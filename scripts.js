@@ -6,6 +6,12 @@ function computerPlay() {
     return randomHand;
 }
 
+let userScore = parseInt(0);
+let computerScore = parseInt(0);
+
+let roundCount = parseInt(0);
+
+
 function playRound() {
     let input = prompt("Plz enter 'ROCK', 'PAPER' or 'SCISSORS'")
     
@@ -14,50 +20,58 @@ function playRound() {
     const computerSelection = computerPlay();
 
     if (input === computerSelection) {
-        console.log("Thats a draw")
+        roundCount ++
+        return ("Thats a draw")
     } else if (input === "ROCK" && computerSelection === "PAPER") {
-        console.log("Paper beats Rock.. Try again!!")
+        computerScore ++
+        roundCount ++
+        return (`Paper beats Rock.. Computer score: ${computerScore}. Your score ${userScore}`)
     } else if (input === "ROCK" && computerSelection === "SCISSORS") {
-        console.log("Rock beats Scissors.. You win!!")
+        userScore ++
+        roundCount ++
+        return (`Rock beats Scissors.. Computer score: ${computerScore}. Your score ${userScore}`)
     } else if (input === "PAPER" && computerSelection === "SCISSORS") {
-        console.log("Scissors beats Paper.. Try again!!")
+        computerScore ++
+        roundCount ++
+        return (`Scissors beats Paper.. Computer score: ${computerScore}. Your score ${userScore}`)
     } else if (input === "PAPER" && computerSelection === "ROCK") {
-        console.log("Paper beats Rock.. You win!!")
+        userScore ++
+        roundCount ++
+        return (`Paper beats Rock.. Computer score: ${computerScore}. Your score ${userScore}`)
     } else if (input === "SCISSORS" && computerSelection === "ROCK") {
-        console.log("Rock beats Scissors.. Try again!!")
+        computerScore ++
+        roundCount ++
+        return (`Rock beats Scissors.. Computer score: ${computerScore}. Your score ${userScore}`)
     } else if (input === "SCISSORS" && computerSelection === "PAPER") {
-        console.log("Scissors beats paper.. You win!!")
+        userScore ++
+        roundCount ++
+        return (`Scissors beats paper.. Computer score: ${computerScore}. Your score ${userScore}`)
     }
 }
 
-playRound()
+let gameOver = false;
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        console.log(playRound())
+
+        if (roundCount === 5) {
+            gameOver = true;
+        } 
+    }
+}
+
+game()
 
 
-/* 
+if (gameOver && userScore > computerScore) {
+    console.log("PARABENS! YOU WON!")
+    alert("YOU WON")
+} else if (gameOver && computerScore > userScore) {
+    console.log("GAME OVER! You Lose!")
+    alert("YOU LOSE")
+} else if (gameOver && computerScore === userScore) {
+    console.log("It looks like a draw")
+    alert("Draw")
+}
 
-
-Prompt user to input Rock/Paper/Scissors
-
-create random computer hand
-
-When user inputs answer
-
-        if userHand === ComputerHand -> Return Draw / Play again
-
-        if userHand === Rock && ComputerHand === Scissors -> You win
-
-        if userHand === Rock && ComputerHand === Paper -> You Lose / Play again
-
-        if userHand === Paper && ComputerHand === Rock -> You win
-
-        if userHand === Paper && ComputerHand === Scissors -> You Lose / Play again
-
-        if userHand === Scissors && ComputerHand === Paper -> You win
-
-        if userHand === Scissors && ComputerHand === Rock -> You Lose / Play again
-
-
-            
-
-
-*/

@@ -8,70 +8,91 @@ function computerPlay() {
 
 let userScore = parseInt(0);
 let computerScore = parseInt(0);
-
 let roundCount = parseInt(0);
+const roundHeader = document.querySelector('#round');
 
 
-function playRound() {
-    let input = prompt("Plz enter 'ROCK', 'PAPER' or 'SCISSORS'")
-    
-    input =  input.toUpperCase();
+function playRound(input) {
+    roundHeader.innerText = `Round ${roundCount + 1}`
 
+    let computerScoreCount = document.querySelector('#computerScore');
+    let userScoreCount = document.querySelector('#userScore');
     const computerSelection = computerPlay();
 
     if (input === computerSelection) {
         roundCount ++
-        return ("Thats a draw")
+        userPick.innerText = `You picked ${input}.`
+        comupterPick.innerHTML = `Computer picked ${computerSelection}`
     } else if (input === "ROCK" && computerSelection === "PAPER") {
         computerScore ++
         roundCount ++
-        return (`Paper beats Rock.. Computer score: ${computerScore}. Your score ${userScore}`)
+        userPick.innerText = `You picked ${input}.`
+        comupterPick.innerHTML = `Computer picked ${computerSelection}`
+        computerScoreCount.innerText = `Computer: ${computerScore}.`;
     } else if (input === "ROCK" && computerSelection === "SCISSORS") {
         userScore ++
         roundCount ++
-        return (`Rock beats Scissors.. Computer score: ${computerScore}. Your score ${userScore}`)
+        userPick.innerText = `You picked ${input}.`
+        comupterPick.innerHTML = `Computer picked ${computerSelection}`
+        userScoreCount.innerText = `User: ${userScore}`;
     } else if (input === "PAPER" && computerSelection === "SCISSORS") {
         computerScore ++
         roundCount ++
-        return (`Scissors beats Paper.. Computer score: ${computerScore}. Your score ${userScore}`)
+        userPick.innerText = `You picked ${input}.`
+        comupterPick.innerHTML = `Computer picked ${computerSelection}`
+        computerScoreCount.innerText = `Computer: ${computerScore}.`;
     } else if (input === "PAPER" && computerSelection === "ROCK") {
         userScore ++
         roundCount ++
-        return (`Paper beats Rock.. Computer score: ${computerScore}. Your score ${userScore}`)
+        userPick.innerText = `You picked ${input}.`
+        comupterPick.innerHTML = `Computer picked ${computerSelection}`
+        userScoreCount.innerText = `User: ${userScore}`;
     } else if (input === "SCISSORS" && computerSelection === "ROCK") {
         computerScore ++
         roundCount ++
-        return (`Rock beats Scissors.. Computer score: ${computerScore}. Your score ${userScore}`)
+        userPick.innerText = `You picked ${input}.`
+        comupterPick.innerHTML = `Computer picked ${computerSelection}`
+        computerScoreCount.innerText = `Computer: ${computerScore}.`;
     } else if (input === "SCISSORS" && computerSelection === "PAPER") {
         userScore ++
         roundCount ++
-        return (`Scissors beats paper.. Computer score: ${computerScore}. Your score ${userScore}`)
+        userPick.innerText = `You picked ${input}.`
+        comupterPick.innerHTML = `Computer picked ${computerSelection}`
+        userScoreCount.innerText = `Player: ${userScore}`;
     }
 }
 
-let gameOver = false;
+const buttons = document.querySelectorAll('button');
+const userPick = document.querySelector('#userPick');
+const comupterPick = document.querySelector('#computerPick');
+const winner = document.querySelector('#winnerAnnouncement');
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound())
 
-        if (roundCount === 5) {
-            gameOver = true;
+// Play round on button click
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        input = button.id;
+
+        if (roundCount < 4) {
+            playRound(input);
+        } else if (roundCount >= 4) {
+            playRound(input);
+            winner.innerText = `${winnerOrLoser()}`
+            roundCount = 0;
+            console.log(roundCount)
         } 
+    });
+})
+
+// Winner or Loser message
+function winnerOrLoser () {
+    if (userScore > computerScore) {
+        return("PARABENS! YOU WON!")
+    } else if (computerScore > userScore) {
+        return("GAME OVER! You Lose!")
+    } else if (computerScore === userScore) {
+        return("It looks like a draw")
     }
-}
+};
 
-game()
-
-
-if (gameOver && userScore > computerScore) {
-    console.log("PARABENS! YOU WON!")
-    alert("YOU WON")
-} else if (gameOver && computerScore > userScore) {
-    console.log("GAME OVER! You Lose!")
-    alert("YOU LOSE")
-} else if (gameOver && computerScore === userScore) {
-    console.log("It looks like a draw")
-    alert("Draw")
-}
 

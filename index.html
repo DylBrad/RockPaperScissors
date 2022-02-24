@@ -5,8 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <div class="content">
+
+        <h2>Pick You Hand</h2>
+
+        <div class="buttons">
+            <button id="ROCK" class="rockBtn"></button>
+            <button id="PAPER" class="paperBtn"></button>
+            <button id="SCISSORS" class="scissorsBtn"></button>
+        </div>
+
+        <h3 id="round">Round 1</h3>
+
+        <div id="scoreCounter" class="scoreboard">
+            <h2 class="scoreHeader">Score</h2>
+            <p class="userScore" id="userScore">Player: 0</p>
+            <p class="compScore" id="computerScore">Computer: 0</p>
+        </div>
+        <div id="results" class="results">
+            <p id="userPick"></p>
+            <p id="computerPick"></p>
+        </div>
+
+        <div id="winnerAnnouncement" class="winnerBox"></div>
+
+    </div>
     
 </body>
 <script src="scripts.js"></script>

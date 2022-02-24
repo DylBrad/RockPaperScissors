@@ -1,0 +1,85 @@
+body {
+    margin: auto 20%;
+    background-image: url("neonBackground.jpg");
+    background-position: center top;
+    background-size: 62% auto;
+    text-align: center;
+    font-family: sans-serif;
+}
+.content {
+    height: 400px;
+    width: auto;
+    transform: translateY(20vh);
+    background-color: #cbaecff2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rockBtn {
+    background-image: url("rock.jpg");
+    background-size: cover;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.paperBtn {
+    background-image: url("paper.jpg");
+    background-size: cover;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.scissorsBtn {
+    background-image: url("scissors.jpg");
+    background-size: cover;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.scoreboard {
+    min-width: 215px;
+    display: grid;
+    grid-template-areas: 
+        'title title'
+        'user computer';
+    gap: 5px;
+    border: 1px solid red;
+}
+
+.scoreHeader {
+    grid-area: title;
+    background-color: aqua;
+    margin: 0;
+    padding: 5%;
+}
+
+.userScore {
+    grid-area: user;
+    background-color: aqua;
+    margin: 0;
+    padding: 5%;
+    min-width: 90px;
+}
+
+.compScore {
+    grid-area: computer;
+    background-color: aqua;
+    margin: 0;
+    padding: 5%;
+    min-width: 90px;
+}
+
+.results {
+    height: 130.47px;
+}
+
+.winnerBox {
+    font-size: large;
+    font-weight: 500;
+    color: rgb(240, 0, 32);
+}
